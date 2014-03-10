@@ -66,6 +66,10 @@ function ListCtrl($scope, $http, Projects) {
   }
   $scope.projects = Projects;
   $scope.sort = {column: 'name', reverse: !'reverse', clickCount: 0};
+  $scope.destroy = function(project) {
+    console.log(project.$id);
+    Projects.remove(project.$id);
+  };
   $scope.random = function(){
     return Math.random();
   };

@@ -1,19 +1,28 @@
-<input type="text" ng-model="search" class="search-query" placeholder="Search">
+<input type="text" ng-model="search.$" class="search-query" placeholder="Search All Fields">
 
 <table>
 
   <thead>
     <tr>
       <th ng-click="sortClick('name')">Project</th>
-      <th>Description</th>
-      <th>Author</th>
-      <th>Size</th>
-      <th>Creation Date</th>
+      <th ng-click="sortClick('description')">Description</th>
+      <th ng-click="sortClick('author')">Author</th>
+      <th ng-click="sortClick('size')">Size</th>
+      <th ng-click="sortClick('creationDate')">Creation Date</th>
       <th><a href="#/new"><i class="icon-plus-sign"></i></a></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
+    <tr>
+      <td><input type="text" ng-model="search.name" class="search-query search-column" placeholder="Search by Name"></td>  
+      <td><input type="text" ng-model="search.description" class="search-query search-column" placeholder="Search by Description"></td>
+      <td><input type="text" ng-model="search.author" class="search-query search-column" placeholder="Search by Author"></td>
+      <td><input type="text" ng-model="search.size" class="search-query search-column" placeholder="Search by Size"></td>
+      <td><input type="text" ng-model="search.creationDate" class="search-query search-column" placeholder="Search by Creation Date"></td>
+      <td></td>
+    </tr>
     <tr ng-repeat="project in projects.projects | filter:search | orderBy:sort.column:sort.reverse">
       <td><a href="{{project.site}}" target="_blank">{{project.name}}</a></td>
       <td>{{project.description}}</td>
@@ -21,6 +30,7 @@
       <td>{{project.size}}</td>
       <td>{{project.creationDate}}</td>
       <td><a href="#/edit/{{project.$id}}"><i class="icon-pencil"></i></a></td>
+      <td><a><i ng-click="destroy(project)" class="icon-trash"></a></i></td>
     </tr>
   </tbody>
 
