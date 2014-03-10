@@ -1,27 +1,30 @@
 <input type="text" ng-model="search.$" class="search-query" placeholder="Search All Fields">
+<br>
+<br>
 
 <table>
 
   <thead>
     <tr>
-      <th ng-click="sortClick('name')">Project</th>
-      <th ng-click="sortClick('description')">Description</th>
-      <th ng-click="sortClick('author')">Author</th>
-      <th ng-click="sortClick('size')">Size</th>
-      <th ng-click="sortClick('creationDate')">Creation Date</th>
-      <th><a href="#/new"><i class="icon-plus-sign"></i></a></th>
-      <th></th>
+      <th ng-click="sortClick('name')" class="tbName">Project</th>
+      <th ng-click="sortClick('description')" class="tbDescription">Description</th>
+      <th ng-click="sortClick('author')" class="tbAuthor">Author</th>
+      <th ng-click="sortClick('size')" class="tbSize">Size</th>
+      <th ng-click="sortClick('creationDate')" class="tbCreationDate">Creation Date</th>
+      <th class="tbEdit"><a href="#/new"><i class="fa fa-plus-circle"></i></a></th>
+      <th class="tbDelete"></th>
     </tr>
   </thead>
 
   <tbody>
     <tr>
-      <td><input type="text" ng-model="search.name" class="search-query search-column" placeholder="Search by Name"></td>  
-      <td><input type="text" ng-model="search.description" class="search-query search-column" placeholder="Search by Description"></td>
-      <td><input type="text" ng-model="search.author" class="search-query search-column" placeholder="Search by Author"></td>
-      <td><input type="text" ng-model="search.size" class="search-query search-column" placeholder="Search by Size"></td>
-      <td><input type="text" ng-model="search.creationDate" class="search-query search-column" placeholder="Search by Creation Date"></td>
-      <td></td>
+      <td><input type="text" ng-model="search.name" class="search-query search-column sName" placeholder="By Name"></td>  
+      <td><input type="text" ng-model="search.description" class="search-query search-column sDescription" placeholder="By Description"></td>
+      <td><input type="text" ng-model="search.author" class="search-query search-column sAuthor" placeholder="By Author"></td>
+      <td><input type="text" ng-model="search.size" class="search-query search-column sSize" placeholder="By Size"></td>
+      <td><input type="text" ng-model="search.creationDate" class="search-query search-column sCreationDate" placeholder="By Date"></td>
+      <td class="sEdit"></td>
+      <td class="tbDelete"></td>
     </tr>
     <tr ng-repeat="project in projects.projects | filter:search | orderBy:sort.column:sort.reverse">
       <td><a href="{{project.site}}" target="_blank">{{project.name}}</a></td>
@@ -29,9 +32,14 @@
       <td>{{project.author}}</td>
       <td>{{project.size}}</td>
       <td>{{project.creationDate}}</td>
-      <td><a href="#/edit/{{project.$id}}"><i class="icon-pencil"></i></a></td>
-      <td><a><i ng-click="destroy(project)" class="icon-trash"></a></i></td>
+      <td><a href="#/edit/{{project.$id}}"><i class="fa fa-pencil"></i></a></td>
+      <td><a><i ng-click="destroy(project)" class="fa fa-trash-o"></a></i></td>
     </tr>
   </tbody>
 
 </table>
+
+<br>
+<h4>Display Table Using ng-grid:</h4>
+<div class="gridStyle" ng-grid="gridOptions"></div>
+<br>

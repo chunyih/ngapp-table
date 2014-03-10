@@ -243,10 +243,58 @@ div.modal-body button {
   z-index: 1051;
 }
 
-
+/* ======== Added =========== */
 .search-query.search-column {
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
 }
 
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 98%; 
+    height: 370px;
+}
+
+table {
+  table-layout: fixed;
+  width: 900px;
+}
+
+th {
+  text-align: left;
+}
+
+td input {
+  padding: 3px 5px !important;
+  width: 90%;
+}
+
+.tbName {
+  width: 100px;
+}
+
+.tbDescription {
+  width: 210px;
+}
+
+.tbAuthor {
+  width: 100px;
+}
+
+.tbSize {
+  width: 70px;
+}
+
+.tbCreationDate {
+  width: 70px;
+}
+
+.tbEdit {
+  width:30px;
+  text-align: left;
+}
+
+.tbDelete {
+  width: 30px;
+}

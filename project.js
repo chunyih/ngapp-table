@@ -41,7 +41,7 @@ function Projects() {
 
 angular.projects = new Projects();
 
-angular.module('project',[]).
+angular.module('project',['ngGrid']).
   factory('Projects', function() {
     return angular.projects;
   }).
@@ -65,6 +65,15 @@ function ListCtrl($scope, $http, Projects) {
     Projects.loaded = 1;
   }
   $scope.projects = Projects;
+  
+  $http.get("projects.json").success(function(data) {
+    $scope.gridData = data;
+    console.log($scope.gridData);
+  });
+  $scope.gridOptions = { data: 'gridData' }; // for ng-grid
+
+
+
   $scope.sort = {column: 'name', reverse: !'reverse', clickCount: 0};
   $scope.destroy = function(project) {
     console.log(project.$id);
