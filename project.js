@@ -55,6 +55,8 @@ angular.module('project',['ngGrid']).
 
      
 function ListCtrl($scope, $http, Projects) {
+  var preColumn;
+
   if(Projects.loaded == 0) {
     $http.get("projects.json").success(function(data) {
       for(var i = 0;i<data.length;i++) {
@@ -68,15 +70,23 @@ function ListCtrl($scope, $http, Projects) {
   
   $http.get("projects.json").success(function(data) {
     $scope.gridData = data;
-    console.log($scope.gridData);
-  });
-  $scope.gridOptions = { data: 'gridData' }; // for ng-grid
-
-
-
-  $scope.sort = {column: 'name', reverse: !'reverse', clickCount: 0};
+  }); // for ng-grid
+  $scope.gridOptions = { 
+    data: 'gridData',
+    sortInfo: {fields: ['size'], directions: ['asc']},
+    enableCellSelection: true,
+    enableRowSelection: false,
+    enableCellEdit: true,
+    columnDefs: [{field: 'size', displayName:'Size', enableCellEdit: true},
+                 {field: 'name', displayName: 'Name', enableCellEdit: true}, 
+                 {field: 'description', displayName:'Description', enableCellEdit: true},
+                 {field: 'site', displayName:'Site URL', enableCellEdit: true},
+                 {field: 'author', displayName:'Author', enableCellEdit: true},
+                 {field: 'creationDate', displayName:'Creation Date', enableCellEdit: true},
+                ] 
+  }; // for ng-grid
+  $scope.sort = {column: 'random', reverse: !'reverse', clickCount: 0};
   $scope.destroy = function(project) {
-    console.log(project.$id);
     Projects.remove(project.$id);
   };
   $scope.random = function(){
@@ -86,24 +96,26 @@ function ListCtrl($scope, $http, Projects) {
     var sort = $scope.sort;
     var random = $scope.random;
 
+    if(preColumn != column) {
+      sort.clickCount = 1;
+      preColumn = column;
+    };
+
     if(sort.clickCount%3 === 0) {
       sort.column = column;
-      sort.reverse = !'reverse';
-      console.log(sort.column);
+      sort.reverse = 'reverse';
       sort.clickCount += 1;
     }
     else if(sort.clickCount%3 === 1) {
       sort.column = column;
-      sort.reverse = 'reverse';
-      console.log("!"+sort.column);
+      sort.reverse = !'reverse';
       sort.clickCount += 1;
     } 
     else {
       sort.column = random;
       sort.reverse = '';
-      console.log(sort.column);
       sort.clickCount += 1;
-    }
+    };
   };
 }
      
