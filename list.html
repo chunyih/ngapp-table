@@ -1,0 +1,27 @@
+<input type="text" ng-model="search" class="search-query" placeholder="Search">
+
+<table>
+
+  <thead>
+    <tr>
+      <th ng-click="sortClick('name')">Project</th>
+      <th>Description</th>
+      <th>Author</th>
+      <th>Size</th>
+      <th>Creation Date</th>
+      <th><a href="#/new"><i class="icon-plus-sign"></i></a></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="project in projects.projects | filter:search | orderBy:sort.column:sort.reverse">
+      <td><a href="{{project.site}}" target="_blank">{{project.name}}</a></td>
+      <td>{{project.description}}</td>
+      <td>{{project.author}}</td>
+      <td>{{project.size}}</td>
+      <td>{{project.creationDate}}</td>
+      <td><a href="#/edit/{{project.$id}}"><i class="icon-pencil"></i></a></td>
+    </tr>
+  </tbody>
+
+</table>

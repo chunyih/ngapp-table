@@ -1,0 +1,49 @@
+<!doctype html>
+<html ng-app="project">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-resource.min.js"></script>
+  <script src="project.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/docs.css">
+  <link rel="stylesheet" href="css/font-awesome.css">
+</head>
+<body style="width:600px;margin:auto;">
+  <div id="content" style="padding:5px;background-color:#efefef;">
+  <div style="background-color:#dfdfdf">
+    <h2>AngularJS - JavaScript Projects</h2>
+    <div ng-view></div>
+  </div>
+  
+  <div>
+    <b>The Ask</b>
+    <ol>
+      <li> Add a new field to the model called author
+      <li> Add a new field to the model called file size
+      <li> Add a new field to the model called creation date
+      <li> Make the column headings clickable and clicking them should cycle
+      through sorting by ascending, descending and no order
+      <li> Add a search row below the heading row, each column contains a search
+      field. Entering a value in the search field should filter data only based on
+      values in that column (unlike the search above the table which filters
+      based on data in any field)
+      <li> Add another action next to the pencil icon on each row to delete the
+      record
+    </ol>
+    <b>Bonus Points</b>
+    <ol>
+      <li> Add a cart area and provide the ability to drag and drop the libraries
+      into this cart. The cart should display each library as a cart item with
+      name and file size. Below the cart, the total file size should be
+      displayed
+      <li> Integrate with any charting/visualization library and present the data
+      either based on creation date or file size. Any other visualizations are
+      welcome
+    </ol>
+    If you have lots of years of experience and applying for senior development 
+    positions, it's strongly recommended that you complete the bonus points listed 
+    above.
+  </div>
+
+</body>
+</html>
